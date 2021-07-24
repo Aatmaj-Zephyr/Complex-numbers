@@ -10,11 +10,6 @@ public class Complex{
         Imaginary=y;
     }
     
-    Complex(double r, float theta){
-        //The polar form of complex number.
-        this(r*Math.cos(theta),r*Math.sin(theta));
-    }
-    
     //Static methods
     public static double abs(Complex a){
         return Math.sqrt(Math.abs(a.Real*a.Real+a.Imaginary*a.Imaginary));
@@ -29,10 +24,10 @@ public class Complex{
     }
     
     public static Complex prod(Complex a,Complex b){
-        return new Complex(a.Real*b.Imaginary,a.Imaginary*a.Real);
+        return new Complex(a.Real*b.Real-a.Imaginary*b.Imaginary,a.Real*b.Imaginary+a.Imaginary*b.Real);
     }
     public static Complex div(Complex a,Complex b){
-        return prod(a,conj(b));
+        return prod(a,reciprocal(b));
     }
     public static Complex div(Complex a, double b){
         return new Complex(a.Real/b,a.Imaginary/b);
@@ -41,6 +36,31 @@ public class Complex{
         return new Complex(a.Real*b,a.Imaginary*b);
     }
     public static Complex conj(Complex a){
-        return div(new Complex(a.Real,-a.Imaginary),abs(a));
+        return new Complex(a.Real,-a.Imaginary);
     }
+    public static Complex reciprocal(Complex a){
+        return div(conj(a),abs(a));
+    }
+    public static void print(Complex a){
+        System.out.println(a.Real+"+i"+a.Imaginary);
+    }
+    public static Complex Polar(double r, double theta){
+        //The polar form of complex number.
+        return new Complex(r*Math.cos(theta),r*Math.sin(theta));
+    }
+    public static Complex pow(Complex a, int b){
+        Complex temp= new Complex(a.Real,a.Imaginary);
+        for(int i=0;i<b-1;i++){
+            temp=prod(temp,a);
+        } 
+        return temp;
+    }
+     public static boolean equals(Complex a,Complex b){
+         if(a.Real==b.Real&&a.Imaginary==b.Imaginary){
+             return true;
+         }
+         else{
+             return false;
+         }
+     }
 }
