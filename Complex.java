@@ -76,6 +76,12 @@ public class Complex{
     public static void print(Complex a){
         //Function to print the complex number.
         //Note this is not marked as final so you can override and print in any format.
+        System.out.print(a.Real+"+i"+a.Imaginary);
+    }
+    
+     public static void println(Complex a){
+        //Function to print the complex number on a newline
+        //Note this is not marked as final so you can override and print in any format.
         System.out.println(a.Real+"+i"+a.Imaginary);
     }
     
