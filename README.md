@@ -3,4 +3,4 @@ This contains the complex numbers class. As complex numbers are not supported in
 You can use the class in the package to make Complex numbers by creating an instance of the class Complex and use the methods easily. Check out the documentation for more details.
 
 
-This is implemented in Cpp as well. Be sure to check that out too👍
+This is implemented in Cpp as well. Even operator overloading is implemented! Be sure to check that out too👍
