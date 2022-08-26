@@ -3,9 +3,9 @@ using namespace std;
    
 
  struct complex {
-    double real_part=0;
-    short isDivision=0;
-    double imaginary_part=0;
+    double real_part=0; //double to store the real part of the complex number
+    short isDivision=0; //toggling multiplication and division print statements
+    double imaginary_part=0; //double to store the imaginary part part of the complex number
     void getsetnumbers(){
         cout<<"number\n";
         cout<<"give real part of number- ";
@@ -14,7 +14,7 @@ using namespace std;
         cin>>imaginary_part;
     }
     
-    double operator +(complex x){
+    double operator +(complex x){ //add complex numbers and print it
         double real_part_addition, imaginary_part_addition;
         real_part_addition=real_part+x.real_part;
         imaginary_part_addition=imaginary_part+x.imaginary_part;
@@ -26,11 +26,11 @@ using namespace std;
         imaginary_part_subtraction=imaginary_part-x.imaginary_part;
         cout<<"Subtraction is==  "<<real_part_subtraction<<"+"<<imaginary_part_subtraction<<"i\n";
     }
- friend double operator *(complex x, complex y);
+ friend double operator *(complex x, complex y); //create friend operators for operator overloading
  friend double operator /(complex x, complex y);
  friend double operator |(complex x, complex y);
 };  
-     double operator |(complex g, complex k){
+     double operator |(complex g, complex k){ //copy two complex numbers
         g.real_part=k.real_part;
         g.imaginary_part=k.imaginary_part;
         g.isDivision=k.isDivision;
@@ -39,19 +39,19 @@ using namespace std;
        double real_part_multiplication, imaginary_part_multiplication;
        real_part_multiplication=p.real_part*o.real_part- p.imaginary_part*o.imaginary_part;
        imaginary_part_multiplication=p.imaginary_part*o.real_part+ p.real_part*o.imaginary_part;
-       if (o.isDivision== 0){
+       if (o.isDivision== 0){ //multiplication case
        cout<<"product is==  "<<real_part_multiplication<<"+("<<imaginary_part_multiplication<<")i\n";
        }
-       else{
+       else{ //division case
           o.real_part=real_part_multiplication;
           o.imaginary_part=imaginary_part_multiplication; 
        }
        
    }
-       double operator /(complex h, complex k){
+       double operator /(complex h, complex k){ //division 
        complex g;
        k.isDivision=1;
-       g|k;
+       g|k; //make a copy
        k.imaginary_part=-k.imaginary_part;
        k*h;
        
